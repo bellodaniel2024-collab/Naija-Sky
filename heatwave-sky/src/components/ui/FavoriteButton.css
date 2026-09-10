@@ -1,0 +1,17 @@
+.fav-btn {
+  color: var(--text-muted);
+  transition: color var(--transition-bounce), transform var(--transition-bounce);
+}
+.fav-btn:hover {
+  color: #f43f5e;
+  transform: scale(1.15);
+}
+.fav-btn--active {
+  color: #f43f5e;
+}
+.fav-btn--active:hover {
+  color: #fb7185;
+  transform: scale(1.1);
+}
+.fav-btn--sm svg { width: 15px; height: 15px; }
+.fav-btn--lg svg { width: 22px; height: 22px; }

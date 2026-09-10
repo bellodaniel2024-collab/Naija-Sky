@@ -1,0 +1,104 @@
+.fav-page__hero {
+  background: linear-gradient(135deg, #be185d 0%, #9d174d 50%, #831843 100%);
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 1.5rem;
+}
+[data-theme="dark"] .fav-page__hero {
+  background: linear-gradient(135deg, #1f0a1a 0%, #4a0f2e 100%);
+}
+.fav-page__hero .animate-fade-up { display: flex; flex-direction: column; gap: 0.75rem; }
+.fav-page__hero .badge-blue {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+.fav-page__title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+}
+.fav-page__sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  max-width: 460px;
+}
+
+.fav-page__content {
+  padding-bottom: 3rem;
+}
+
+.fav-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 2rem auto;
+}
+.fav-page__empty-icon { margin-bottom: 0.5rem; }
+.fav-page__empty-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.fav-page__empty-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.fav-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 640px)  { .fav-page__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .fav-page__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.fav-card {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.fav-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.fav-card__name {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.fav-card__state {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.fav-card__temp {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  line-height: 1;
+}
+.fav-card__cond {
+  font-size: 0.8375rem;
+  color: var(--text-muted);
+}
+.fav-card__error {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+.fav-card__cta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+.fav-card:hover .fav-card__cta { opacity: 1; }

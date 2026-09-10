@@ -1,0 +1,38 @@
+.unit-toggle {
+  padding: 0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.unit-toggle--labeled {
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border);
+}
+
+.unit-toggle__track {
+  display: flex;
+  background: var(--bg-overlay);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.unit-toggle__option {
+  padding: 0.35rem 0.625rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  letter-spacing: 0.02em;
+}
+.unit-toggle__option--active {
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.unit-toggle__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}

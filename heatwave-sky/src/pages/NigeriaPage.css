@@ -1,0 +1,145 @@
+.nigeria-page__hero {
+  background: linear-gradient(135deg, var(--sky-800) 0%, var(--sky-600) 50%, var(--sky-500) 100%);
+  padding: 3rem 0 2.5rem;
+  margin-bottom: 2rem;
+}
+[data-theme="dark"] .nigeria-page__hero {
+  background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 50%, #075985 100%);
+}
+
+.nigeria-page__hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.nigeria-page__hero-inner h1 {
+  color: #fff;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+.nigeria-page__tagline {
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  max-width: 500px;
+}
+
+/* Controls */
+.nigeria-page__controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  align-items: center;
+}
+.nigeria-page__search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.nigeria-page__search-icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.nigeria-page__search {
+  padding-left: 2.5rem !important;
+  border-radius: var(--radius-full) !important;
+}
+.nigeria-page__filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.nigeria-page__select {
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  min-width: 130px;
+}
+
+.nigeria-page__count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Grid */
+.nigeria-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 480px)  { .nigeria-page__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 768px)  { .nigeria-page__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1024px) { .nigeria-page__grid { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 1280px) { .nigeria-page__grid { grid-template-columns: repeat(6, 1fr); } }
+
+/* State Card */
+.state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 0.875rem;
+  cursor: pointer;
+  gap: 0.25rem;
+  position: relative;
+}
+.state-card:hover .state-card__link { opacity: 1; }
+
+.state-card__region {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  font-size: 0.55rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.state-card__icon { margin-bottom: 0.25rem; }
+
+.state-card__name {
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+.state-card__capital {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+.state-card__temp {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  line-height: 1;
+}
+.state-card__cond {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.state-card__link {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-primary);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(14,165,233,0.08);
+}
+.state-card:hover .state-card__link,
+.state-card:focus-within .state-card__link {
+  opacity: 1;
+}
+.state-card__link:hover { color: var(--sky-700); }

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+  <!-- ── Charset & Viewport ── -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ── Primary Meta ── -->
+  <title>Heatwave Sky | Weather in Nigeria</title>
+  <meta name="description" content="Weather, wherever you are in Nigeria. Real-time weather conditions, hourly forecasts, 7-day forecasts and precipitation data for all 36 Nigerian states and the FCT." />
+  <meta name="keywords" content="Nigeria weather, Lagos weather forecast, Abuja weather, Kano weather, Port Harcourt weather, Nigerian states weather, real-time weather Nigeria, Heatwave Sky" />
+  <meta name="author" content="Heatwave Sky" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://heatwavesky.ng/" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type"         content="website" />
+  <meta property="og:site_name"    content="Heatwave Sky" />
+  <meta property="og:title"        content="Heatwave Sky | Weather in Nigeria" />
+  <meta property="og:description"  content="Weather, wherever you are in Nigeria. Real-time conditions, hourly and 7-day forecasts for every Nigerian state." />
+  <meta property="og:url"          content="https://heatwavesky.ng/" />
+  <meta property="og:image"        content="https://heatwavesky.ng/og-image.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"    content="Heatwave Sky — Nigeria Weather Platform" />
+  <meta property="og:locale"       content="en_NG" />
+
+  <!-- ── Twitter / X Card ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Heatwave Sky | Weather in Nigeria" />
+  <meta name="twitter:description" content="Real-time weather for all 36 Nigerian states. Hourly forecasts, rain probability, UV index, and more." />
+  <meta name="twitter:image"       content="https://heatwavesky.ng/og-image.png" />
+  <meta name="twitter:image:alt"   content="Heatwave Sky — Nigeria Weather Platform" />
+
+  <!-- ── PWA Theme Colors ── -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#0ea5e9" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0c4a6e" />
+
+  <!-- ── iOS PWA ── -->
+  <meta name="apple-mobile-web-app-capable"          content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title"            content="Heatwave Sky" />
+
+  <!-- ── Android / Desktop PWA ── -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name"       content="Heatwave Sky" />
+
+  <!-- ── Microsoft Tiles ── -->
+  <meta name="msapplication-TileColor" content="#0ea5e9" />
+
+  <!-- ── Web App Manifest ── -->
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- ── Icons ── -->
+  <link rel="icon"             type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon"                         href="/favicon.svg" />
+  <link rel="mask-icon"        color="#0ea5e9"       href="/favicon.svg" />
+
+  <!-- ── Preconnect for performance ── -->
+  <link rel="preconnect"   href="https://fonts.googleapis.com" />
+  <link rel="preconnect"   href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect"   href="https://api.open-meteo.com" />
+  <link rel="preconnect"   href="https://geocoding-api.open-meteo.com" />
+  <link rel="dns-prefetch" href="https://basemaps.cartocdn.com" />
+  <link rel="dns-prefetch" href="https://nominatim.openstreetmap.org" />
+
+  <!-- ── Typography ── -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ── CRITICAL: Theme detection before first paint (prevents FOUC) ── -->
+  <script>
+    try {
+      var t = localStorage.getItem('hws_theme');
+      var dark = t === 'dark' || ((!t || t === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      if (dark) document.documentElement.classList.add('dark');
+    } catch (e) {}
+  </script>
+
+  <!-- ── CRITICAL: Minimal inline CSS — prevents blank white flash ── -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: #f0f9ff;
+      color: #0c4a6e;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    [data-theme="dark"] body {
+      background-color: #060d1a;
+      color: #e0f2fe;
+    }
+
+    #root { min-height: 100vh; }
+
+    /* ── Branded splash screen ── */
+    #app-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      background: #f0f9ff;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    [data-theme="dark"] #app-loader {
+      background: #060d1a;
+    }
+
+    #app-loader.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .apl-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .apl-name {
+      font-size: 1.625rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .apl-heat { color: #f97316; }
+    .apl-sky  { color: #0ea5e9; }
+
+    .apl-spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(14, 165, 233, 0.18);
+      border-top-color: #0ea5e9;
+      border-radius: 50%;
+      animation: apl-spin 0.75s linear infinite;
+    }
+
+    .apl-tagline {
+      font-size: 0.8125rem;
+      color: #64748b;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    [data-theme="dark"] .apl-tagline { color: #334155; }
+
+    @keyframes apl-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .apl-spinner { animation: none; border-top-color: #0ea5e9; opacity: 0.7; }
+    }
+  </style>
+
+  <!-- ── JSON-LD Structured Data ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Heatwave Sky",
+    "url": "https://heatwavesky.ng",
+    "description": "Real-time weather for all 36 Nigerian states and the FCT.",
+    "applicationCategory": "WeatherApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en-NG",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NGN" },
+    "author": { "@type": "Organization", "name": "Heatwave Sky", "url": "https://heatwavesky.ng" },
+    "featureList": [
+      "Real-time weather conditions",
+      "24-hour hourly forecast",
+      "7-day daily forecast",
+      "All 36 Nigerian states and FCT",
+      "Interactive Nigeria weather map",
+      "Precipitation charts",
+      "UV index, humidity, wind speed, pressure",
+      "Sunrise and sunset times",
+      "Favourite locations",
+      "Progressive Web App — works offline",
+      "Dark mode",
+      "Celsius and Fahrenheit toggle"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Splash screen — visible until React mounts -->
+  <div id="app-loader" aria-label="Loading Heatwave Sky" role="status">
+    <div class="apl-logo" aria-hidden="true">
+      <svg width="44" height="44" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="apl-g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%"   stop-color="#0ea5e9"/>
+            <stop offset="100%" stop-color="#f97316"/>
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="16" fill="url(#apl-g)"/>
+        <circle cx="13" cy="13" r="5" fill="#fde68a" opacity="0.95"/>
+        <g stroke="#fde68a" stroke-width="1.4" stroke-linecap="round">
+          <line x1="13" y1="5"    x2="13" y2="7.5"/>
+          <line x1="13" y1="18.5" x2="13" y2="21"/>
+          <line x1="5"  y1="13"   x2="7.5" y2="13"/>
+          <line x1="18.5" y1="13" x2="21"  y2="13"/>
+          <line x1="7.5"  y1="7.5"  x2="9.5"  y2="9.5"/>
+          <line x1="16.5" y1="16.5" x2="18.5" y2="18.5"/>
+          <line x1="18.5" y1="7.5"  x2="16.5" y2="9.5"/>
+          <line x1="9.5"  y1="16.5" x2="7.5"  y2="18.5"/>
+        </g>
+        <ellipse cx="20" cy="21"   rx="7"  ry="4"   fill="white" opacity="0.9"/>
+        <ellipse cx="15" cy="22.5" rx="5"  ry="3.5" fill="white" opacity="0.9"/>
+        <ellipse cx="24" cy="22.5" rx="4"  ry="3"   fill="white" opacity="0.8"/>
+      </svg>
+      <span class="apl-name">
+        <span class="apl-heat">Heatwave</span><span class="apl-sky"> Sky</span>
+      </span>
+    </div>
+    <div class="apl-spinner" aria-hidden="true"></div>
+    <p class="apl-tagline">Weather, wherever you are in Nigeria.</p>
+  </div>
+
+  <!-- React mounts here -->
+  <div id="root"></div>
+
+  <!-- Hide splash once React populates #root -->
+  <script>
+    (function () {
+      var loader = document.getElementById('app-loader');
+      var root   = document.getElementById('root');
+      if (!loader || !root) return;
+
+      var observer = new MutationObserver(function () {
+        if (root.firstChild) {
+          loader.classList.add('fade-out');
+          observer.disconnect();
+          // Remove from DOM after transition
+          setTimeout(function () {
+            if (loader.parentNode) loader.parentNode.removeChild(loader);
+          }, 400);
+        }
+      });
+
+      observer.observe(root, { childList: true, subtree: false });
+
+      // Safety net: force-hide after 6 seconds
+      setTimeout(function () {
+        loader.classList.add('fade-out');
+        observer.disconnect();
+      }, 6000);
+    }());
+  </script>
+
+  <!-- No-JS fallback -->
+  <noscript>
+    <style>
+      #app-loader { display: none !important; }
+      #noscript-msg {
+        display: flex; flex-direction: column; align-items: center;
+        justify-content: center; min-height: 100vh; text-align: center;
+        padding: 2rem; gap: 1rem; font-family: system-ui, sans-serif;
+        background: #f0f9ff; color: #0c4a6e;
+      }
+    </style>
+    <div id="noscript-msg">
+      <svg width="52" height="52" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="16" fill="#0ea5e9"/>
+        <circle cx="13" cy="13" r="5" fill="#fde68a"/>
+        <ellipse cx="20" cy="21" rx="7" ry="4" fill="white" opacity="0.9"/>
+        <ellipse cx="15" cy="22.5" rx="5" ry="3.5" fill="white" opacity="0.9"/>
+      </svg>
+      <h1 style="font-size:1.5rem;font-weight:800;">
+        <span style="color:#f97316">Heatwave</span><span style="color:#0ea5e9"> Sky</span>
+      </h1>
+      <p style="max-width:360px;line-height:1.6;color:#475569;font-size:0.95rem;">
+        Heatwave Sky needs JavaScript to show live weather data.
+        Please enable JavaScript in your browser and reload.
+      </p>
+    </div>
+  </noscript>
+
+  <!-- App entry point -->
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
+</html>

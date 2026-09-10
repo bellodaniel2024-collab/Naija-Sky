@@ -1,0 +1,15 @@
+.loc-btn-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.loc-btn { gap: 0.5rem; }
+.loc-btn__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--danger);
+  max-width: 300px;
+  line-height: 1.4;
+}

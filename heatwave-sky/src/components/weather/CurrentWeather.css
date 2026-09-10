@@ -1,0 +1,199 @@
+.current-weather {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  padding: 3rem 0 2.5rem;
+  transition: background var(--transition-slow);
+}
+
+.current-weather__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.current-weather__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 860px) {
+  .current-weather__layout {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+/* ── Location ── */
+.current-weather__location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.75rem;
+}
+.current-weather__city {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+.current-weather__state {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+/* ── Temperature ── */
+.current-weather__temp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.current-weather__temp {
+  font-size: clamp(5rem, 14vw, 8rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+.current-weather__icon-wrap {
+  padding-top: 0.5rem;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2));
+}
+
+/* ── Condition ── */
+.current-weather__condition {
+  margin-bottom: 0.625rem;
+}
+.current-weather__condition-text {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.01em;
+}
+
+/* ── Sub info ── */
+.current-weather__sub {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 1rem;
+}
+.current-weather__sub strong { color: rgba(255,255,255,0.95); font-weight: 700; }
+.current-weather__hl {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.current-weather__hl-sep { opacity: 0.5; }
+
+/* ── Updated ── */
+.current-weather__updated {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+}
+.current-weather__refresh {
+  color: rgba(255,255,255,0.55);
+  padding: 0.2rem;
+  margin-left: 0.25rem;
+  transition: color var(--transition-fast), transform var(--transition-bounce);
+}
+.current-weather__refresh:hover {
+  color: rgba(255,255,255,0.9);
+  transform: rotate(180deg);
+}
+
+/* ── Stats grid ── */
+.current-weather__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+}
+@media (max-width: 860px) {
+  .current-weather__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .current-weather__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.current-weather__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.875rem 0.75rem;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-fast), transform var(--transition-bounce);
+  min-width: 90px;
+  gap: 0.3rem;
+}
+.current-weather__stat:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+.current-weather__stat-icon {
+  color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.15rem;
+}
+.current-weather__stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(255,255,255,0.6);
+}
+.current-weather__stat-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+/* ── Atmospheric effects ── */
+.atm-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.atm-glow__orb {
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,230,138,0.25) 0%, transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+
+.star-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle ease-in-out infinite;
+}

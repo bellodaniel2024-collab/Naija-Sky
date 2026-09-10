@@ -1,0 +1,56 @@
+.map-page__hero {
+  background: linear-gradient(135deg, var(--sky-900) 0%, var(--sky-700) 100%);
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 1.5rem;
+}
+[data-theme="dark"] .map-page__hero {
+  background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 100%);
+}
+.map-page__hero .animate-fade-up { display: flex; flex-direction: column; gap: 0.75rem; }
+.map-page__title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: #fff;
+}
+.map-page__sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  max-width: 460px;
+}
+
+.map-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.map-page__legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.map-page__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.map-page__legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.map-page__legend-note {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-top: 0.75rem;
+}
+.map-page__legend-note a {
+  color: var(--brand-primary);
+}

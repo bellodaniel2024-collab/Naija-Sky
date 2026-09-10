@@ -1,0 +1,111 @@
+.weather-map {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  padding: 0;
+  border-radius: var(--radius-xl);
+}
+@media (max-width: 640px) { .weather-map { height: 340px; } }
+
+.weather-map__container {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  transition: opacity 0.4s ease;
+}
+
+.weather-map__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 10;
+}
+.weather-map__loading-text {
+  position: absolute;
+  bottom: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.weather-map--error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Leaflet popup override */
+.leaflet-weather-popup .leaflet-popup-content-wrapper {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0;
+}
+.leaflet-weather-popup .leaflet-popup-content {
+  margin: 0;
+}
+.leaflet-weather-popup .leaflet-popup-tip {
+  background: var(--bg-secondary);
+}
+
+.map-popup {
+  padding: 0.875rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-width: 160px;
+}
+.map-popup__name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary, #0c4a6e);
+  margin-bottom: 0.1rem;
+}
+.map-popup__state {
+  font-size: 0.775rem;
+  color: var(--text-muted, #64748b);
+  margin-bottom: 0.5rem;
+}
+.map-popup__temp {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0ea5e9;
+  line-height: 1;
+  margin-bottom: 0.1rem;
+}
+.map-popup__cond {
+  font-size: 0.8rem;
+  color: var(--text-muted, #64748b);
+  margin-bottom: 0.3rem;
+}
+.map-popup__rain {
+  font-size: 0.775rem;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.map-popup__loading, .map-popup__error {
+  font-size: 0.8rem;
+  color: var(--text-muted, #64748b);
+  font-style: italic;
+}
+.map-popup__btn {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.775rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+.map-popup__btn:hover { opacity: 0.88; }

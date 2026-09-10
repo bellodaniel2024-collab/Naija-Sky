@@ -1,0 +1,87 @@
+.sunrise-sunset {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sunrise-sunset__visual {
+  margin: 0.5rem 0;
+}
+
+.sunrise-sunset__arc {
+  width: 100%;
+  max-width: 280px;
+  display: block;
+  margin: 0 auto;
+}
+
+.sunrise-sunset__times {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.sunrise-sunset__time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
+}
+
+.sunrise-sunset__time-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+.sunrise-sunset__time-icon--rise {
+  background: rgba(251, 146, 60, 0.15);
+  color: #f97316;
+}
+.sunrise-sunset__time-icon--set {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+
+.sunrise-sunset__time-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+.sunrise-sunset__time-value {
+  font-size: 1.075rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.sunrise-sunset__day-length {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.625rem 0.75rem;
+  background: var(--bg-overlay);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  white-space: nowrap;
+  gap: 0.2rem;
+}
+.sunrise-sunset__dl-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+.sunrise-sunset__dl-value {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}

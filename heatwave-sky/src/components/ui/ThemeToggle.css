@@ -1,0 +1,19 @@
+.theme-toggle {
+  color: var(--text-muted);
+  transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-bounce);
+}
+.theme-toggle:hover {
+  color: var(--brand-primary);
+  transform: rotate(15deg);
+}
+.theme-toggle--labeled {
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-overlay);
+  border: 1px solid var(--border);
+}
+.theme-toggle__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
