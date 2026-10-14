@@ -6,6 +6,7 @@ import { getWeatherInfo } from '../utils/weatherCodes'
 import WeatherIcon from '../components/weather/WeatherIcon'
 import { useApp } from '../context/AppContext'
 import { StateCardSkeleton } from '../components/ui/LoadingSkeleton'
+import AdBanner from '../components/ui/AdBanner'
 import './NigeriaPage.css'
 
 const REGIONS = ['All', 'South West', 'South South', 'South East', 'North Central', 'North West', 'North East']
@@ -125,6 +126,9 @@ export default function NigeriaPage() {
         <p className="nigeria-page__count" aria-live="polite">
           {filtered.length} {filtered.length === 1 ? 'state' : 'states'} shown
         </p>
+
+        {/* Ad — above state grid */}
+        <AdBanner slot="0000000003" format="horizontal" className="nigeria-page__ad" />
 
         {/* State Cards Grid */}
         {loading ? (

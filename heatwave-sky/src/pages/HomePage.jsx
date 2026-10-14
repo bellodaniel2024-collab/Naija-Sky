@@ -11,6 +11,7 @@ import FavoritesPanel from '../components/ui/FavoritesPanel'
 import SearchBar from '../components/ui/SearchBar'
 import LocationButton from '../components/ui/LocationButton'
 import ErrorState from '../components/ui/ErrorState'
+import AdBanner from '../components/ui/AdBanner'
 import {
   HeroSkeleton, HourlyForecastSkeleton,
   DailyForecastSkeleton, MetricsSkeleton,
@@ -81,6 +82,10 @@ export default function HomePage() {
             ) : weather ? (
               <>
                 <HourlyForecast hourly={weather.hourly} />
+
+                {/* Ad — between hourly and daily */}
+                <AdBanner slot="0000000001" format="horizontal" className="homepage__ad" />
+
                 <DailyForecast daily={weather.daily} />
                 <PrecipitationChart hourly={weather.hourly} />
               </>
@@ -95,6 +100,9 @@ export default function HomePage() {
               <>
                 <WeatherMetrics current={weather.current} />
                 <SunriseSunset today={today} />
+
+                {/* Ad — in sidebar below sunrise/sunset */}
+                <AdBanner slot="0000000002" format="rectangle" />
               </>
             ) : null}
             <FavoritesPanel onSelect={setActiveLocation} />

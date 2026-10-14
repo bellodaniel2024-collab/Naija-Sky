@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import AdBanner from '../ui/AdBanner'
 import './Footer.css'
 
 export default function Footer() {
@@ -44,6 +45,8 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom">
+        {/* Ad — above copyright in footer */}
+        <AdBanner slot="0000000005" format="horizontal" className="footer__ad" />
         <p className="footer__copy">
           © {year} Heatwave Sky. Weather data by{' '}
           <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer" className="footer__ext-link">

@@ -44,6 +44,10 @@
   min-width: 0;
 }
 
+.homepage__ad {
+  margin-bottom: 1rem;
+}
+
 .homepage__sidebar {
   display: flex;
   flex-direction: column;

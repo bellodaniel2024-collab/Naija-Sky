@@ -84,3 +84,8 @@
   transition: color var(--transition-fast);
 }
 .footer__ext-link:hover { color: var(--brand-primary); text-decoration: underline; }
+
+.footer__ad {
+  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+}

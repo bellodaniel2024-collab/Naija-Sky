@@ -143,3 +143,7 @@
   opacity: 1;
 }
 .state-card__link:hover { color: var(--sky-700); }
+
+.nigeria-page__ad {
+  margin-bottom: 1.25rem;
+}

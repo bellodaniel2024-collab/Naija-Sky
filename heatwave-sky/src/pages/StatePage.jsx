@@ -12,6 +12,7 @@ import PrecipitationChart from '../components/weather/PrecipitationChart'
 import ErrorState from '../components/ui/ErrorState'
 import { HeroSkeleton, HourlyForecastSkeleton, DailyForecastSkeleton } from '../components/ui/LoadingSkeleton'
 import FavoriteButton from '../components/ui/FavoriteButton'
+import AdBanner from '../components/ui/AdBanner'
 import './StatePage.css'
 
 export default function StatePage() {
@@ -129,6 +130,9 @@ export default function StatePage() {
                 ))}
               </div>
             </div>
+
+            {/* Ad — bottom of sidebar */}
+            <AdBanner slot="0000000004" format="rectangle" />
           </div>
         </div>
       </div>
